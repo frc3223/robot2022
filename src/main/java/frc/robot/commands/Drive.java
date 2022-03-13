@@ -23,7 +23,7 @@ public class Drive extends CommandBase {
     this.m_subsystem = subsystem;
     this.m_driverController = driverController;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(subsystem, driverController);
+    addRequirements(subsystem);
   }
 
   // Called when the command is initially scheduled.

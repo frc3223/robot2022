@@ -7,6 +7,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import edu.wpi.first.wpilibj.Joystick;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -18,7 +19,8 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
 
   private RobotContainer m_robotContainer;
-
+  public Joystick driverController;
+  public Joystick manipulatorController;
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -27,7 +29,11 @@ public class Robot extends TimedRobot {
   public void robotInit() {
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
-    m_robotContainer = new RobotContainer();
+    //Constants.DRIVER_CONTROLLER
+    driverController = new Joystick(0);
+    //Constants.MANIPULATOR_CONTROLLER
+    manipulatorController = new Joystick(1);
+    m_robotContainer = new RobotContainer(driverController, manipulatorController);
   }
 
   /**

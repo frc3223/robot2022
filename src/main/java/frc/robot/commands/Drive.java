@@ -4,23 +4,26 @@
 
 package frc.robot.commands;
 
+import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj2.command.CommandBase;
+import edu.wpi.first.wpilibj.Joystick;
 
 /** An example command that uses an example subsystem. */
-public class ExampleCommand extends CommandBase {
+public class Drive extends CommandBase {
   @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
   private final DriveTrain m_subsystem;
-
+  private final Joystick m_driverController;
   /**
    * Creates a new ExampleCommand.
    *
    * @param subsystem The subsystem used by this command.
    */
-  public ExampleCommand(DriveTrain subsystem) {
-    m_subsystem = subsystem;
+  public Drive(DriveTrain subsystem, Joystick driverController) {
+    this.m_subsystem = subsystem;
+    this.m_driverController = driverController;
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(subsystem);
+    addRequirements(subsystem, driverController);
   }
 
   // Called when the command is initially scheduled.
@@ -29,11 +32,28 @@ public class ExampleCommand extends CommandBase {
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
-  public void execute() {}
+  public void execute()
+  {
+    //Constants.DRIVER_CONTROLLER_TANK_RIGHT
+    double leftStick = m_driverController.getRawAxis(5); //right joystick up down
+    //Constants.DRIVER_CONTROLLER_TANK_LEFT
+    double rightStick = m_driverController.getRawAxis(10); //left joystick up down
+
+    if(leftStick*rightStick < 0){
+      //Turning make it slower
+      //Constants.TANK_DRIVE_SPEED_RATIO
+      m_subsystem.tankDrive(leftStick*0.8, rightStick*0.8);
+    }else{
+      m_subsystem.tankDrive(leftStick, rightStick);
+    }
+  }
 
   // Called once the command ends or is interrupted.
   @Override
-  public void end(boolean interrupted) {}
+  public void end(boolean interrupted)
+  {
+    m_subsystem.stop();
+  }
 
   // Returns true when the command should end.
   @Override

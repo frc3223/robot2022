@@ -6,9 +6,10 @@ package frc.robot.subsystems;
 
 import com.ctre.phoenix.motorcontrol.ControlMode;
 import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
-import com.ctre.phoenix.motorcontrol.can.TalonSRX;
-import com.ctre.phoenix.motorcontrol.can.VictorSPX;
+import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
+import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
@@ -17,30 +18,28 @@ import edu.wpi.first.wpilibj2.command.SubsystemBase;
 public class DriveTrain extends SubsystemBase {
   PowerDistribution pdp;
   DifferentialDrive differentialDrive = null;
-  TalonSRX rightBackMotor_Talon = null;
-  VictorSPX rightFrontMotor_Victor = null;
-  TalonSRX leftBackMotor_Talon = null;
-  VictorSPX leftFrontMotor_Victor = null;
+  WPI_TalonSRX rightBackMotor_Talon = null;
+  WPI_VictorSPX rightFrontMotor_Victor = null;
+  WPI_TalonSRX leftBackMotor_Talon = null;
+  WPI_VictorSPX leftFrontMotor_Victor = null;
 
   /** Creates a new ExampleSubsystem. */
   public DriveTrain() {
-    rightBackMotor_Talon = new TalonSRX(1);
-    rightFrontMotor_Victor = new VictorSPX(17);
-    leftBackMotor_Talon = new TalonSRX(13);
-    leftFrontMotor_Victor = new VictorSPX(12);
+    rightBackMotor_Talon = new WPI_TalonSRX(1);
+    rightFrontMotor_Victor = new WPI_VictorSPX(17);
+    leftBackMotor_Talon = new WPI_TalonSRX(13);
+    leftFrontMotor_Victor = new WPI_VictorSPX(12);
+
+    rightBackMotor_Talon.setInverted(false);
+    rightFrontMotor_Victor.setInverted(false);
+    leftBackMotor_Talon.setInverted(false);
+    leftFrontMotor_Victor.setInverted(false);
 
    // this.pdp = new PowerDistribution().
+    MotorControllerGroup rightMotors = new MotorControllerGroup(rightFrontMotor_Victor, rightBackMotor_Talon);
+     MotorControllerGroup leftMotors = new MotorControllerGroup(leftFrontMotor_Victor, leftBackMotor_Talon);
 
-  //should be setNeutralMode(ctre.NeutralMode.Brake)
-   leftBackMotor_Talon.set(ControlMode.PercentOutput, 0);
-   rightBackMotor_Talon.set(ControlMode.PercentOutput, 0);
-   leftFrontMotor_Victor.set(ControlMode.PercentOutput, 0);
-  rightFrontMotor_Victor.set(ControlMode.PercentOutput, 0);
-
-
-
-
-
+    differentialDrive = new DifferentialDrive(leftMotors, rightMotors);
 
   }
 
@@ -53,4 +52,44 @@ public class DriveTrain extends SubsystemBase {
   public void simulationPeriodic() {
     // This method will be called once per scheduler run during simulation
   }
+
+  public void arcadeDrive(double moveSpeed, double rotateSpeed)
+  {
+    differentialDrive.arcadeDrive(moveSpeed, rotateSpeed);
+  }
+
+  public void tankDrive (double leftSpeed, double rightSpeed)
+  {
+    differentialDrive.tankDrive(leftSpeed, rightSpeed);
+  }
+  public void moveLeft()
+  {
+    //using Robot2020 values
+    this.tankDrive(-0.75, 0.75);
+  }
+
+  public void moveRight()
+  {
+    //using Robot2020 values
+    this.tankDrive(0.75, -0.75);
+  }
+
+  public void moveForward()
+  {
+    //using Robot2020 values
+    this.tankDrive(0.5, 0.5);
+  }
+
+  public void stop()
+  {
+    //using Robot2020 values
+    this.tankDrive(0, 0);
+  }
+
+  public void moveBackward()
+  {
+    //using Robot2020 values
+    this.tankDrive(-0.5, -0.5);
+  }
+
 }

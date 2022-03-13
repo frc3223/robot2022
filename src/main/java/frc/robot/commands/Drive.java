@@ -8,6 +8,7 @@ import frc.robot.Constants;
 import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.Joystick;
+import java.lang.Math;
 
 /** An example command that uses an example subsystem. */
 public class Drive extends CommandBase {
@@ -34,6 +35,17 @@ public class Drive extends CommandBase {
   @Override
   public void execute()
   {
+    //Use Rockslide ArcadeDrive?
+    //rockSlideArcadeDrive();
+
+    //Use tankDrive from 2020 Robot by default
+    tankDrive2020();
+
+  }
+
+  public void tankDrive2020()
+  {
+      //taken from Robot2020 tankDrive command
     //Constants.DRIVER_CONTROLLER_TANK_RIGHT
     double leftStick = m_driverController.getRawAxis(5); //right joystick up down
     //Constants.DRIVER_CONTROLLER_TANK_LEFT
@@ -46,6 +58,23 @@ public class Drive extends CommandBase {
     }else{
       m_subsystem.tankDrive(leftStick, rightStick);
     }
+  }
+  public void rockSlideArcadeDrive()
+  {
+        //from Rockslide (robot 2018):
+        double forward1 = m_driverController.getRawAxis(1);
+        double leftRight1 = m_driverController.getRawAxis(0);
+    
+        double forward2 = m_driverController.getRawAxis(5);
+        double leftRight2 = m_driverController.getRawAxis(4);
+    
+        if (Math.abs(forward2) < 0.2 || Math.abs(leftRight2) < 0.2){
+          this.m_subsystem.arcadeDrive(forward2*0.3, leftRight2*0.5);
+        }else if(Math.abs(forward1) < 0.2 || Math.abs(leftRight1) < 0.2){
+          this.m_subsystem.arcadeDrive(forward1, leftRight1);
+        }else{
+          this.m_subsystem.arcadeDrive(0, 0);
+        }
   }
 
   // Called once the command ends or is interrupted.

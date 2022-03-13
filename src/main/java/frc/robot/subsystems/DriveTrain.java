@@ -8,13 +8,12 @@ import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-import edu.wpi.first.wpilibj.PowerDistribution;
+
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class DriveTrain extends SubsystemBase {
-  PowerDistribution pdp;
   DifferentialDrive differentialDrive = null;
   WPI_TalonSRX rightBackMotor_Talon = null;
   WPI_VictorSPX rightFrontMotor_Victor = null;

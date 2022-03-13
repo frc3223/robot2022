@@ -4,8 +4,6 @@
 
 package frc.robot.subsystems;
 
-import com.ctre.phoenix.motorcontrol.ControlMode;
-import com.ctre.phoenix.motorcontrol.TalonSRXControlMode;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
@@ -35,7 +33,6 @@ public class DriveTrain extends SubsystemBase {
     leftBackMotor_Talon.setInverted(false);
     leftFrontMotor_Victor.setInverted(false);
 
-   // this.pdp = new PowerDistribution().
     MotorControllerGroup rightMotors = new MotorControllerGroup(rightFrontMotor_Victor, rightBackMotor_Talon);
      MotorControllerGroup leftMotors = new MotorControllerGroup(leftFrontMotor_Victor, leftBackMotor_Talon);
 

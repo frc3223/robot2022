@@ -7,7 +7,9 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.Drive;
+import frc.robot.commands.ElevatorTest;
 import frc.robot.subsystems.DriveTrain;
+import frc.robot.subsystems.Elevator;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
@@ -20,12 +22,15 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrain m_exampleSubsystem = new DriveTrain();
+  private final Elevator m_Elevator = new Elevator();
   private final Command m_autoCommand = new InstantCommand();
+  private final Command m_elevatorTest = new InstantCommand();
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer(Joystick driverController, Joystick manipulatorController) {
 
     Drive m_autoCommand = new Drive(m_exampleSubsystem, driverController);
+    ElevatorTest m_elevatorTest = new ElevatorTest(m_Elevator, driverController);
     // Configure the button bindings
     configureButtonBindings();
   }

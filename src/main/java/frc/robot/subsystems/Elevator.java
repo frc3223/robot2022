@@ -89,6 +89,18 @@ public class Elevator extends SubsystemBase {
         this.motorRight_Talon.set(-0.6);
         this.motorRightOther_Talon.set(-0.6);
     }
+
+    public double getEncoderPosition()
+    {
+        return -this.motorPrimary_Talon.getSelectedSensorPosition(0);
+    }
+
+    public void off()
+    {
+        this.motorPrimary_Talon.stopMotor();
+        this.motorRight_Talon.stopMotor();
+    }
+
     @Override
     public void periodic() {
       // This method will be called once per scheduler run

@@ -20,10 +20,12 @@ Be happy, this code should be exponentially easier to work on. If it isn't, hunt
     self.fan2 = wpilib.PWM(0)
 
     INTAKE CAN
-    self.intake_motor_closeOpen = wpilib.VictorSP(8)
-    self.intake_motor_rightWheel = wpilib.VictorSP(9)
-    self.intake_motor_leftWheel = wpilib.VictorSP(7)
-    self.pdp = wpilib.PowerDistributionPanel(16)
+    Right grabber intake Motor
+        CAN 4
+    Left grabber intake Motor
+        CAN 5
+    Grabber Window Motor
+        CAN 6
 
     DRIVETRAIN INPUTS
 

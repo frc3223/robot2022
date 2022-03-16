@@ -18,6 +18,7 @@ import edu.wpi.first.wpilibj.Joystick;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private Command mTeleopDriveCommand;
+  private Command mTeleopElevatorCommand;
 
   private RobotContainer m_robotContainer;
   public Joystick driverController;
@@ -88,6 +89,10 @@ public class Robot extends TimedRobot {
     mTeleopDriveCommand = m_robotContainer.getDrive();
     if(mTeleopDriveCommand != null){
       mTeleopDriveCommand.schedule();
+    }
+    mTeleopElevatorCommand = m_robotContainer.getElevator();
+    if(mTeleopElevatorCommand != null){
+      mTeleopElevatorCommand.schedule();
     }
   }
 

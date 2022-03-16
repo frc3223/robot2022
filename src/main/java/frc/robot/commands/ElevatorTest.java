@@ -47,7 +47,7 @@ public class ElevatorTest extends CommandBase {
       
     if(this.m_driverController.getPOV(0) == 0){//Up on D-pad
         this.m_elevator.testDrivePositive();
-    }else if (this.m_driverController.getPOV(0) == 100){//Down on D-pad
+    }else if (this.m_driverController.getPOV(0) == 180){//Down on D-pad
         this.m_elevator.testDriveNegative();
     }else if(DriverStation.isDisabled()){
         this.m_elevator.off();

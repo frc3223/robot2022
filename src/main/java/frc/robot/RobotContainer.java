@@ -19,18 +19,19 @@ public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final DriveTrain m_driveTrain;
   private final Drive m_Drive;
-  private final ElevatorTest m_Elevator;
-  private final Elevator m_ElevatorSystem;
-  //private final Intake m_Intake;
-  //private final Grabber m_Grabber;
+  private final ElevatorTest m_ElevatorTest;
+  private final Elevator m_Elevator;
+  private final Intake m_Intake;
+  private final Grabber m_Grabber;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer(Joystick driverController, Joystick manipulatorController) {
     m_driveTrain = new DriveTrain();
     m_Drive = new Drive(m_driveTrain, driverController);
-    m_ElevatorSystem = new Elevator();
-    m_Elevator = new ElevatorTest(m_ElevatorSystem, driverController);
-    //m_Intake = new Grabber();
+    m_Elevator = new Elevator();
+    m_ElevatorTest = new ElevatorTest(m_Elevator, driverController);
+    m_Grabber = new Grabber();
+    m_Intake = new Intake(m_Grabber,driverController);
   }
 
   /**
@@ -45,6 +46,10 @@ public class RobotContainer {
   }
   public Command getElevator()
   {
-    return m_Elevator;
+    return m_ElevatorTest;
+  }
+  public Command getGrabber()
+  {
+    return m_Intake;
   }
 }

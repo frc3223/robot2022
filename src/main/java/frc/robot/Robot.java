@@ -19,6 +19,7 @@ public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private Command mTeleopDriveCommand;
   private Command mTeleopElevatorCommand;
+  private Command mTeleopGrabberCommand;
 
   private RobotContainer m_robotContainer;
   public Joystick driverController;
@@ -93,6 +94,10 @@ public class Robot extends TimedRobot {
     mTeleopElevatorCommand = m_robotContainer.getElevator();
     if(mTeleopElevatorCommand != null){
       mTeleopElevatorCommand.schedule();
+    }
+    mTeleopGrabberCommand = m_robotContainer.getGrabber();
+    if(mTeleopGrabberCommand != null){
+      mTeleopGrabberCommand.schedule();
     }
   }
 

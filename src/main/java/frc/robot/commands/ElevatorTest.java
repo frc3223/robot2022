@@ -6,7 +6,6 @@ import edu.wpi.first.wpilibj.DriverStation;
 
 
 public class ElevatorTest extends CommandBase {
-    @SuppressWarnings({"PMD.UnusedPrivateField", "PMD.SingularField"})
     private final Elevator m_elevator;
     private final Joystick m_driverController;
     

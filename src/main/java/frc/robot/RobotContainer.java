@@ -52,4 +52,9 @@ public class RobotContainer {
     // An ExampleCommand will run in autonomous
     return m_autoCommand;
   }
+
+  public Command getDrive()
+  {
+    return m_autoCommand;
+  }
 }

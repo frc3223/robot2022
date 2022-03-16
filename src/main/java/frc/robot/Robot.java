@@ -17,10 +17,12 @@ import edu.wpi.first.wpilibj.Joystick;
  */
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
+  private Command mTeleopDriveCommand;
 
   private RobotContainer m_robotContainer;
   public Joystick driverController;
   public Joystick manipulatorController;
+  
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
@@ -82,6 +84,11 @@ public class Robot extends TimedRobot {
     // this line or comment it out.
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
+    }
+
+    mTeleopDriveCommand = m_robotContainer.getDrive();
+    if(mTeleopDriveCommand != null){
+      mTeleopDriveCommand.schedule();
     }
   }
 

@@ -4,8 +4,6 @@
 
 package frc.robot;
 
-import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.XboxController;
 import frc.robot.commands.*;
 import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.Joystick;
@@ -23,7 +21,8 @@ public class RobotContainer {
   private final Drive m_Drive;
   private final ElevatorTest m_Elevator;
   private final Elevator m_ElevatorSystem;
-  private final Grabber m_Intake;
+  //private final Intake m_Intake;
+  //private final Grabber m_Grabber;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer(Joystick driverController, Joystick manipulatorController) {
@@ -31,7 +30,7 @@ public class RobotContainer {
     m_Drive = new Drive(m_driveTrain, driverController);
     m_ElevatorSystem = new Elevator();
     m_Elevator = new ElevatorTest(m_ElevatorSystem, driverController);
-    m_Intake = new Grabber();
+    //m_Intake = new Grabber();
   }
 
   /**

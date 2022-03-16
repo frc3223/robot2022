@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import edu.wpi.first.wpilibj.Joystick;
+import java.lang.System;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -86,7 +87,6 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
-
     mTeleopDriveCommand = m_robotContainer.getDrive();
     if(mTeleopDriveCommand != null){
       mTeleopDriveCommand.schedule();
@@ -99,6 +99,8 @@ public class Robot extends TimedRobot {
     if(mTeleopGrabberCommand != null){
       mTeleopGrabberCommand.schedule();
     }
+
+    System.out.println("Robots don't beans...but yours did!");
   }
 
   /** This function is called periodically during operator control. */

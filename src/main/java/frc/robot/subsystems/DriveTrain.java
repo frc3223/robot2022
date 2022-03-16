@@ -5,12 +5,9 @@
 package frc.robot.subsystems;
 
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
-
 import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
-
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
-
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 
 public class DriveTrain extends SubsystemBase {
@@ -22,10 +19,10 @@ public class DriveTrain extends SubsystemBase {
 
   /** Creates a new ExampleSubsystem. */
   public DriveTrain() {
-    rightBackMotor_Talon = new WPI_TalonSRX(1);
-    rightFrontMotor_Victor = new WPI_VictorSPX(17);
-    leftBackMotor_Talon = new WPI_TalonSRX(13);
-    leftFrontMotor_Victor = new WPI_VictorSPX(12);
+    this.rightBackMotor_Talon = new WPI_TalonSRX(1);
+    this.rightFrontMotor_Victor = new WPI_VictorSPX(17);
+    this.leftBackMotor_Talon = new WPI_TalonSRX(13);
+    this.leftFrontMotor_Victor = new WPI_VictorSPX(12);
 
     rightBackMotor_Talon.setInverted(false);
     rightFrontMotor_Victor.setInverted(false);
@@ -33,9 +30,9 @@ public class DriveTrain extends SubsystemBase {
     leftFrontMotor_Victor.setInverted(false);
 
     MotorControllerGroup rightMotors = new MotorControllerGroup(rightFrontMotor_Victor, rightBackMotor_Talon);
-     MotorControllerGroup leftMotors = new MotorControllerGroup(leftFrontMotor_Victor, leftBackMotor_Talon);
+    MotorControllerGroup leftMotors = new MotorControllerGroup(leftFrontMotor_Victor, leftBackMotor_Talon);
 
-    differentialDrive = new DifferentialDrive(leftMotors, rightMotors);
+    this.differentialDrive = new DifferentialDrive(leftMotors, rightMotors);
 
   }
 
@@ -61,19 +58,19 @@ public class DriveTrain extends SubsystemBase {
   public void moveLeft()
   {
     //using Robot2020 values
-    this.tankDrive(-0.75, 0.75);
+    this.tankDrive(-1, 1);
   }
 
   public void moveRight()
   {
     //using Robot2020 values
-    this.tankDrive(0.75, -0.75);
+    this.tankDrive(1, -1);
   }
 
   public void moveForward()
   {
     //using Robot2020 values
-    this.tankDrive(0.5, 0.5);
+    this.tankDrive(1, 1);
   }
 
   public void stop()
@@ -85,7 +82,7 @@ public class DriveTrain extends SubsystemBase {
   public void moveBackward()
   {
     //using Robot2020 values
-    this.tankDrive(-0.5, -0.5);
+    this.tankDrive(-1, -1);
   }
 
 }

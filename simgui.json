@@ -1,4 +1,28 @@
 {
+  "HALProvider": {
+    "Other Devices": {
+      "Talon SRX[13]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Talon SRX[1]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Victor SPX[12]": {
+        "header": {
+          "open": true
+        }
+      },
+      "Victor SPX[17]": {
+        "header": {
+          "open": true
+        }
+      }
+    }
+  },
   "NTProvider": {
     "types": {
       "/FMSInfo": "FMSInfo",

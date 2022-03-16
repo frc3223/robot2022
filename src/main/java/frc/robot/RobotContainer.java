@@ -6,10 +6,8 @@ package frc.robot;
 
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.XboxController;
-import frc.robot.commands.Drive;
-import frc.robot.commands.ElevatorTest;
-import frc.robot.subsystems.DriveTrain;
-import frc.robot.subsystems.Elevator;
+import frc.robot.commands.*;
+import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
@@ -21,40 +19,27 @@ import edu.wpi.first.wpilibj2.command.InstantCommand;
  */
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
-  private final DriveTrain m_exampleSubsystem = new DriveTrain();
-  private final Elevator m_Elevator = new Elevator();
-  private final Command m_autoCommand = new InstantCommand();
-  private final Command m_elevatorTest = new InstantCommand();
+  private final DriveTrain m_driveTrain;
+  private final Drive m_Drive;
+  //private final ElevatorTest m_Elevator;
+  //private final Elevator m_ElevatorSystem;
+  private final Grabber m_Intake;
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer(Joystick driverController, Joystick manipulatorController) {
-
-    Drive m_autoCommand = new Drive(m_exampleSubsystem, driverController);
-    ElevatorTest m_elevatorTest = new ElevatorTest(m_Elevator, driverController);
-    // Configure the button bindings
-    configureButtonBindings();
+    m_driveTrain = new DriveTrain();
+    m_Drive = new Drive(m_driveTrain, driverController);
+    m_Intake = new Grabber();
   }
-
-  /**
-   * Use this method to define your button->command mappings. Buttons can be created by
-   * instantiating a {@link GenericHID} or one of its subclasses ({@link
-   * edu.wpi.first.wpilibj.Joystick} or {@link XboxController}), and then passing it to a {@link
-   * edu.wpi.first.wpilibj2.command.button.JoystickButton}.
-   */
-  private void configureButtonBindings() {}
 
   /**
    * Use this to pass the autonomous command to the main {@link Robot} class.
    *
    * @return the command to run in autonomous
    */
-  public Command getAutonomousCommand() {
-    // An ExampleCommand will run in autonomous
-    return m_autoCommand;
-  }
 
   public Command getDrive()
   {
-    return m_autoCommand;
+    return m_Drive;
   }
 }

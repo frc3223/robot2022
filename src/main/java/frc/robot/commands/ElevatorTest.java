@@ -14,12 +14,12 @@ public class ElevatorTest extends CommandBase {
     private int state;
     private double voltage;
     private boolean done;
-    public ElevatorTest(Elevator mElevator, Joystick driverController)
+    public ElevatorTest(Elevator Elevator, Joystick driverController)
     {
-        this.m_elevator = mElevator;
+        this.m_elevator = Elevator;
         this.m_driverController = driverController;
 
-        addRequirements(mElevator);
+        addRequirements(Elevator);
     }
 
       // Called when the command is initially scheduled.

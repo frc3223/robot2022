@@ -29,10 +29,10 @@ public class Drive extends CommandBase {
   public void execute()
   {
     //Use Rockslide ArcadeDrive?
-    //rockSlideArcadeDrive();
+    rockSlideArcadeDrive();
 
     //Use tankDrive from 2020 Robot by default
-    tankDrive2020();
+    //tankDrive2020();
 
   }
 
@@ -44,7 +44,7 @@ public class Drive extends CommandBase {
     //Constants.DRIVER_CONTROLLER_TANK_LEFT
     double rightStick = m_driverController.getRawAxis(5); //left joystick up down
 
-    if(leftStick*rightStick < 0){
+    if(leftStick > 0.1 || rightStick > 0.1){
       //Turning make it slower
       //Constants.TANK_DRIVE_SPEED_RATIO
       m_driveTrain.tankDrive(leftStick*0.8, rightStick*0.8);
@@ -55,16 +55,16 @@ public class Drive extends CommandBase {
   public void rockSlideArcadeDrive()
   {
         //from Rockslide (robot 2018):
-        double forward1 = m_driverController.getRawAxis(1);
-        double leftRight1 = m_driverController.getRawAxis(0);
+        double fastForward = m_driverController.getRawAxis(1);
+        double fastTurn = m_driverController.getRawAxis(0);
     
-        double forward2 = m_driverController.getRawAxis(5);
-        double leftRight2 = m_driverController.getRawAxis(4);
+        double slowForward = m_driverController.getRawAxis(5);
+        double slowTurn = m_driverController.getRawAxis(4);
     
-        if (Math.abs(forward2) < 0.2 || Math.abs(leftRight2) < 0.2){
-          this.m_driveTrain.arcadeDrive(forward2*0.3, leftRight2*0.5);
-        }else if(Math.abs(forward1) < 0.2 || Math.abs(leftRight1) < 0.2){
-          this.m_driveTrain.arcadeDrive(forward1, leftRight1);
+        if(Math.abs(fastForward) > 0.1 || Math.abs(fastTurn) > 0.1){
+          this.m_driveTrain.arcadeDrive(fastForward, fastTurn);
+        }else if(Math.abs(slowForward) < 0.2 || Math.abs(slowTurn) < 0.2){
+          this.m_driveTrain.arcadeDrive(slowForward*0.3, slowTurn*0.5);
         }else{
           this.m_driveTrain.arcadeDrive(0, 0);
         }

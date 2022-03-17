@@ -50,7 +50,7 @@ public class Elevator extends SubsystemBase {
         this.motorPrimary_Talon.set(-0.1);
         this.motorOther_Talon.set(-0.1);
         this.motorRight_Talon.set(0.1);
-        this.motorRightOther_Talon.set(1.0);
+        this.motorRightOther_Talon.set(0.1);
         this.fan1.set(1.0);
         this.fan2.set(1.0);
     }

@@ -25,8 +25,8 @@ public class Grabber extends SubsystemBase{
     }
 
     public void removeCube(){
-        this.leftIntakeMotor.set(-0.5);
-        this.rightIntakeMotor.set(0.5);
+        this.leftIntakeMotor.set(-1);
+        this.rightIntakeMotor.set(1);
     }
 
     public void openGrabber(double openSpeed){

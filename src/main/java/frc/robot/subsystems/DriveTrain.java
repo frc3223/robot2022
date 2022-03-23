@@ -9,6 +9,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class DriveTrain extends SubsystemBase {
   DifferentialDrive differentialDrive = null;
@@ -19,10 +20,10 @@ public class DriveTrain extends SubsystemBase {
 
   /** Creates a new ExampleSubsystem. */
   public DriveTrain() {
-    this.rightBackMotor_Talon = new WPI_TalonSRX(1);
-    this.rightFrontMotor_Victor = new WPI_VictorSPX(17);
-    this.leftBackMotor_Talon = new WPI_TalonSRX(13);
-    this.leftFrontMotor_Victor = new WPI_VictorSPX(12);
+    this.rightBackMotor_Talon = new WPI_TalonSRX(Constants.rightBackMotor_Talon);
+    this.rightFrontMotor_Victor = new WPI_VictorSPX(Constants.rightFrontMotor_Victor);
+    this.leftBackMotor_Talon = new WPI_TalonSRX(Constants.leftBackMotor_Talon);
+    this.leftFrontMotor_Victor = new WPI_VictorSPX(Constants.leftFrontMotor_Victor);
 
     rightBackMotor_Talon.setInverted(false);
     rightFrontMotor_Victor.setInverted(false);

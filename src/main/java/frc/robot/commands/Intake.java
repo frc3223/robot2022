@@ -2,6 +2,7 @@ package frc.robot.commands;
 import frc.robot.subsystems.Grabber;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.Joystick;
+import frc.robot.Constants;
 
 public class Intake extends CommandBase {
     private final Grabber m_Grabber;
@@ -16,10 +17,10 @@ public class Intake extends CommandBase {
 
     @Override
     public void execute(){
-        double openArmTrigger = m_driverController.getRawAxis(2);
-        double closeArmTrigger = m_driverController.getRawAxis(3);
-        boolean intakeInWheels = m_driverController.getRawButton(6);
-        boolean intakeOutWheels = m_driverController.getRawButton(5);
+        double openArmTrigger = m_driverController.getRawAxis(Constants.openArmTrigger);
+        double closeArmTrigger = m_driverController.getRawAxis(Constants.closeArmTrigger);
+        boolean intakeInWheels = m_driverController.getRawButton(Constants.intakeInWheels);
+        boolean intakeOutWheels = m_driverController.getRawButton(Constants.intakeOutWheels);
         
         if(openArmTrigger >= 0.1){
             m_Grabber.openGrabber(openArmTrigger);

@@ -3,6 +3,7 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import edu.wpi.first.wpilibj.motorcontrol.PWMSparkMax;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import edu.wpi.first.wpilibj.DigitalInput;
+import frc.robot.Constants;
 
 public class Elevator extends SubsystemBase {
     WPI_TalonSRX motorPrimary_Talon = null;
@@ -23,15 +24,15 @@ public class Elevator extends SubsystemBase {
 
     public Elevator()
     {
-        motorPrimary_Talon = new WPI_TalonSRX(3);
-        motorOther_Talon = new WPI_TalonSRX(2);
-        motorRight_Talon = new WPI_TalonSRX(14);
-        motorRightOther_Talon = new WPI_TalonSRX(15);
+        motorPrimary_Talon = new WPI_TalonSRX(Constants.motorPrimary_Talon);
+        motorOther_Talon = new WPI_TalonSRX(Constants.motorOther_Talon);
+        motorRight_Talon = new WPI_TalonSRX(Constants.motorRight_Talon);
+        motorRightOther_Talon = new WPI_TalonSRX(Constants.motorOther_Talon);
 
-        fan1 = new PWMSparkMax(1);
-        fan2 = new PWMSparkMax(0);
+        fan1 = new PWMSparkMax(Constants.fan1);
+        fan2 = new PWMSparkMax(Constants.fan2);
 
-        sensor = new DigitalInput(9);
+        sensor = new DigitalInput(Constants.sensor);
     }
 
     public void setPosition(double position)

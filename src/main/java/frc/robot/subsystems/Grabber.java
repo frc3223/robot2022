@@ -1,6 +1,7 @@
 package frc.robot.subsystems;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
+import frc.robot.Constants;
 
 public class Grabber extends SubsystemBase{
     WPI_VictorSPX leftIntakeMotor = null;
@@ -8,9 +9,9 @@ public class Grabber extends SubsystemBase{
     WPI_VictorSPX grabberWindowMotor = null;
 
     public Grabber() {
-        this.leftIntakeMotor = new WPI_VictorSPX(5);
-        this.rightIntakeMotor = new WPI_VictorSPX(4);
-        this.grabberWindowMotor = new WPI_VictorSPX(6);
+        this.leftIntakeMotor = new WPI_VictorSPX(Constants.leftIntakeMotor);
+        this.rightIntakeMotor = new WPI_VictorSPX(Constants.rightIntakeMotor);
+        this.grabberWindowMotor = new WPI_VictorSPX(Constants.grabberWindowMotor);
 
         leftIntakeMotor.setInverted(false);
         rightIntakeMotor.setInverted(false);

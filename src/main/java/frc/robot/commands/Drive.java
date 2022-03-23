@@ -7,6 +7,7 @@ import frc.robot.subsystems.DriveTrain;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.Joystick;
 import java.lang.Math;
+import frc.robot.Constants;
 
 public class Drive extends CommandBase {
   
@@ -40,9 +41,9 @@ public class Drive extends CommandBase {
   {
       //taken from Robot2020 tankDrive command
     //Constants.DRIVER_CONTROLLER_TANK_RIGHT
-    double leftStick = m_driverController.getRawAxis(1); //right joystick up down
+    double leftStick = m_driverController.getRawAxis(Constants.leftStickUpDown);
     //Constants.DRIVER_CONTROLLER_TANK_LEFT
-    double rightStick = m_driverController.getRawAxis(5); //left joystick up down
+    double rightStick = m_driverController.getRawAxis(Constants.rightStickUpDown);
 
     if(leftStick > 0.1 || rightStick > 0.1){
       //Turning make it slower
@@ -55,11 +56,11 @@ public class Drive extends CommandBase {
   public void rockSlideArcadeDrive()
   {
         //from Rockslide (robot 2018):
-        double fastForward = m_driverController.getRawAxis(1);
-        double fastTurn = m_driverController.getRawAxis(0);
+        double fastForward = m_driverController.getRawAxis(Constants.leftStickUpDown);
+        double fastTurn = m_driverController.getRawAxis(Constants.leftStickLeftRight);
     
-        double slowForward = m_driverController.getRawAxis(5);
-        double slowTurn = m_driverController.getRawAxis(4);
+        double slowForward = m_driverController.getRawAxis(Constants.rightStickUpDown);
+        double slowTurn = m_driverController.getRawAxis(Constants.rightStickLeftRight);
     
         if(Math.abs(fastForward) > 0.1 || Math.abs(fastTurn) > 0.1){
           this.m_driveTrain.arcadeDrive(fastForward, fastTurn);

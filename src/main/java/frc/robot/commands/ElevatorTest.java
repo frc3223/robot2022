@@ -3,6 +3,7 @@ import frc.robot.subsystems.Elevator;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.DriverStation;
+import frc.robot.Constants;
 
 
 public class ElevatorTest extends CommandBase {
@@ -43,9 +44,9 @@ public class ElevatorTest extends CommandBase {
   public void test1()
   {
       
-    if(this.m_driverController.getPOV(0) == 0){//Up on D-pad
+    if(this.m_driverController.getPOV(0) == Constants.dPadUp){//Up on D-pad
         this.m_elevator.testDrivePositive();
-    }else if (this.m_driverController.getPOV(0) == 180){//Down on D-pad
+    }else if (this.m_driverController.getPOV(0) == Constants.dPadDown){//Down on D-pad
         this.m_elevator.testDriveNegative();
     }else if(DriverStation.isDisabled()){
         this.m_elevator.off();

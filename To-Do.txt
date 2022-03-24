@@ -1,0 +1,13 @@
+MECHANICAL
+
+Constant force springs for elevator?
+Improve grabber holding ability
+
+ELECTRICAL
+
+Clean up rats nest
+Change all connectors to Andersons if they aren't already changed
+
+PROGRAMMING
+
+Dashboard..?

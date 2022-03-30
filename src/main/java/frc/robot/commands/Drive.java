@@ -63,9 +63,9 @@ public class Drive extends CommandBase {
         double slowTurn = m_driverController.getRawAxis(Constants.rightStickLeftRight);
     
         if(Math.abs(fastForward) > 0.1 || Math.abs(fastTurn) > 0.1){
-          this.m_driveTrain.arcadeDrive(fastForward, fastTurn);
-        }else if(Math.abs(slowForward) < 0.2 || Math.abs(slowTurn) < 0.2){
-          this.m_driveTrain.arcadeDrive(slowForward*0.3, slowTurn*0.5);
+          this.m_driveTrain.arcadeDrive(fastForward, fastTurn*-1);
+        }else if(Math.abs(slowForward) < 0.1 || Math.abs(slowTurn) < 0.1){
+          this.m_driveTrain.arcadeDrive(slowForward*0.5, slowTurn*-0.7);
         }else{
           this.m_driveTrain.arcadeDrive(0, 0);
         }

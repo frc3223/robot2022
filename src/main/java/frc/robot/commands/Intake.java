@@ -17,15 +17,22 @@ public class Intake extends CommandBase {
 
     @Override
     public void execute(){
-        double openArmTrigger = m_driverController.getRawAxis(Constants.openArmTrigger);
-        double closeArmTrigger = m_driverController.getRawAxis(Constants.closeArmTrigger);
-        boolean intakeInWheels = m_driverController.getRawButton(Constants.intakeInWheels);
-        boolean intakeOutWheels = m_driverController.getRawButton(Constants.intakeOutWheels);
+
+        //xbox controller
+        //double openArmTrigger = m_driverController.getRawAxis(2);
+        //double closeArmTrigger = m_driverController.getRawAxis(3);
+        //boolean intakeInWheels = m_driverController.getRawButton(6);
+        //boolean intakeOutWheels = m_driverController.getRawButton(5);
         
-        if(openArmTrigger >= 0.1){
-            m_Grabber.openGrabber(openArmTrigger);
-        }else if(closeArmTrigger >= 0.1){
-            m_Grabber.closeGrabber(closeArmTrigger);
+        //logitech controller
+        boolean openArmTrigger = m_driverController.getRawButton(5);
+        boolean closeArmTrigger = m_driverController.getRawButton(6);
+        boolean intakeInWheels = m_driverController.getRawButton(7);
+        boolean intakeOutWheels = m_driverController.getRawButton(8);
+        if(openArmTrigger){
+            m_Grabber.openGrabber(0.5);
+        }else if(closeArmTrigger){
+            m_Grabber.closeGrabber(-0.5);
         }else{
             m_Grabber.stopGrabber();
         }

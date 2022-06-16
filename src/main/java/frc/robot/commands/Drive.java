@@ -58,9 +58,13 @@ public class Drive extends CommandBase {
         double fastForward = m_driverController.getRawAxis(1);
         double fastTurn = m_driverController.getRawAxis(0);
     
-        double slowForward = m_driverController.getRawAxis(5);
-        double slowTurn = m_driverController.getRawAxis(4);
+        //xbox controller
+        //double slowForward = m_driverController.getRawAxis(5);
+        //double slowTurn = m_driverController.getRawAxis(4);
     
+        //logitech controller
+        double slowForward = m_driverController.getRawAxis(2);
+        double slowTurn = m_driverController.getRawAxis(3);
         if(Math.abs(fastForward) > 0.1 || Math.abs(fastTurn) > 0.1){
           this.m_driveTrain.arcadeDrive(fastForward, fastTurn);
         }else if(Math.abs(slowForward) < 0.2 || Math.abs(slowTurn) < 0.2){
